@@ -1,0 +1,12 @@
+.\obj\ff.o: Lib_FatFs\src\ff.c
+.\obj\ff.o: .\Lib_FatFs\inc\ff.h
+.\obj\ff.o: .\Lib_FatFs\inc\integer.h
+.\obj\ff.o: .\Lib_FatFs\inc\ffconf.h
+.\obj\ff.o: .\Lib_CMSIS\inc\lpc17xx.h
+.\obj\ff.o: .\Lib_CMSIS\inc\core_cm3.h
+.\obj\ff.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\obj\ff.o: .\Lib_CMSIS\inc\core_cmInstr.h
+.\obj\ff.o: .\Lib_CMSIS\inc\core_cmFunc.h
+.\obj\ff.o: .\Lib_CMSIS\inc\system_LPC17xx.h
+.\obj\ff.o: .\Lib_FatFs\inc\diskio.h
+.\obj\ff.o: C:\Keil\ARM\ARMCC\bin\..\include\stdarg.h

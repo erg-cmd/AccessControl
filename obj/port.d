@@ -1,0 +1,16 @@
+.\obj\port.o: FreeRTOS-Source\portable\RVDS\ARM_CM3\port.c
+.\obj\port.o: .\FreeRTOS-Source\include\FreeRTOS.h
+.\obj\port.o: C:\Keil\ARM\ARMCC\bin\..\include\stddef.h
+.\obj\port.o: .\FreeRTOS-Source\include\projdefs.h
+.\obj\port.o: .\inc\FreeRTOSConfig.h
+.\obj\port.o: .\Lib_CMSIS\inc\LPC17xx.h
+.\obj\port.o: .\Lib_CMSIS\inc\core_cm3.h
+.\obj\port.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\obj\port.o: .\Lib_CMSIS\inc\core_cmInstr.h
+.\obj\port.o: .\Lib_CMSIS\inc\core_cmFunc.h
+.\obj\port.o: .\Lib_CMSIS\inc\system_LPC17xx.h
+.\obj\port.o: .\FreeRTOS-Source\include\portable.h
+.\obj\port.o: .\FreeRTOS-Source\portable\RVDS\ARM_CM3\portmacro.h
+.\obj\port.o: .\FreeRTOS-Source\include\mpu_wrappers.h
+.\obj\port.o: .\FreeRTOS-Source\include\task.h
+.\obj\port.o: .\FreeRTOS-Source\include\list.h

@@ -1,0 +1,12 @@
+.\obj\spi_msd_driver.o: Lib_Driver\SD\src\SPI_MSD_Driver.c
+.\obj\spi_msd_driver.o: .\Lib_Driver\SD\inc\SPI_MSD_Driver.h
+.\obj\spi_msd_driver.o: .\Lib_CMSIS\inc\LPC17xx.h
+.\obj\spi_msd_driver.o: .\Lib_CMSIS\inc\core_cm3.h
+.\obj\spi_msd_driver.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\obj\spi_msd_driver.o: .\Lib_CMSIS\inc\core_cmInstr.h
+.\obj\spi_msd_driver.o: .\Lib_CMSIS\inc\core_cmFunc.h
+.\obj\spi_msd_driver.o: .\Lib_CMSIS\inc\system_LPC17xx.h
+.\obj\spi_msd_driver.o: .\Lib_Driver\Perif\include\lpc17xx_ssp.h
+.\obj\spi_msd_driver.o: .\Lib_Driver\Perif\include\lpc_types.h
+.\obj\spi_msd_driver.o: .\Lib_Driver\Perif\include\lpc17xx_gpio.h
+.\obj\spi_msd_driver.o: .\Lib_Driver\Perif\include\lpc17xx_pinsel.h

@@ -1,0 +1,932 @@
+ARM Linker, 5.03 [Build 76] [MDK-ARM Standard]
+
+==============================================================================
+
+Section Cross References
+
+    startup_lpc17xx.o(RESET) refers to startup_lpc17xx.o(STACK) for __initial_sp
+    startup_lpc17xx.o(RESET) refers to startup_lpc17xx.o(.text) for Reset_Handler
+    startup_lpc17xx.o(RESET) refers to port.o(.emb_text) for SVC_Handler
+    startup_lpc17xx.o(RESET) refers to port.o(.text) for SysTick_Handler
+    startup_lpc17xx.o(RESET) refers to firm_uart.o(.text) for UART0_IRQHandler
+    startup_lpc17xx.o(RESET) refers to main.o(.text) for RIT_IRQHandler
+    startup_lpc17xx.o(.text) refers to system_lpc17xx.o(.text) for SystemInit
+    startup_lpc17xx.o(.text) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    system_lpc17xx.o(.text) refers to uldiv.o(.text) for __aeabi_uldivmod
+    system_lpc17xx.o(.text) refers to system_lpc17xx.o(.data) for .data
+    main.o(.text) refers to lpc17xx_rit.o(.text) for RIT_GetIntStatus
+    main.o(.text) refers to queue.o(.text) for xQueueGenericReceive
+    main.o(.text) refers to port.o(.text) for vPortEnterCritical
+    main.o(.text) refers to firm_uart.o(.text) for UARTReceive
+    main.o(.text) refers to lpc17xx_gpio.o(.text) for GPIO_ReadValue
+    main.o(.text) refers to firm_app.o(.text) for Ra_Delay
+    main.o(.text) refers to firm_lcd.o(.text) for LCD_WrtCmd
+    main.o(.text) refers to lpc17xx_rtc.o(.text) for RTC_GetFullTime
+    main.o(.text) refers to tasks.o(.text) for uxTaskPriorityGet
+    main.o(.text) refers to ff.o(.text) for f_open
+    main.o(.text) refers to main.o(.data) for .data
+    main.o(.text) refers to firm_uart.o(.bss) for bc
+    main.o(.text) refers to main.o(.bss) for .bss
+    main.o(.text) refers to firm_teclado.o(.text) for TECLADO_AntiRebote
+    main.o(.text) refers to firm_uart.o(.data) for TxIntStat
+    main.o(.text) refers to spi_msd_driver.o(.text) for MSD_SPI_Configuration
+    main.o(.text) refers to lpc17xx_pinsel.o(.text) for PINSEL_ConfigPin
+    main.o(.text) refers to lpc17xx_uart.o(.text) for UART_ConfigStructInit
+    lpc17xx_clkpwr.o(.text) refers to system_lpc17xx.o(.data) for SystemCoreClock
+    lpc17xx_rit.o(.text) refers to lpc17xx_clkpwr.o(.text) for CLKPWR_ConfigPPWR
+    lpc17xx_rtc.o(.text) refers to lpc17xx_clkpwr.o(.text) for CLKPWR_ConfigPPWR
+    lpc17xx_uart.o(.text) refers to lpc17xx_clkpwr.o(.text) for CLKPWR_GetPCLK
+    lpc17xx_uart.o(.text) refers to lpc17xx_uart.o(.bss) for .bss
+    lpc17xx_uart.o(.text) refers to lpc17xx_uart.o(.data) for .data
+    lpc17xx_ssp.o(.text) refers to lpc17xx_clkpwr.o(.text) for CLKPWR_GetPCLK
+    lpc17xx_ssp.o(.text) refers to lpc17xx_ssp.o(.bss) for .bss
+    firm_app.o(.text) refers to firm_app.o(.data) for .data
+    firm_app.o(.text) refers to main.o(.data) for msTicks
+    firm_lcd.o(.text) refers to main.o(.data) for msTicks
+    firm_teclado.o(.text) refers to lpc17xx_gpio.o(.text) for GPIO_SetDir
+    firm_teclado.o(.text) refers to firm_teclado.o(.data) for .data
+    firm_teclado.o(.text) refers to main.o(.data) for buffer_teclado
+    firm_uart.o(.text) refers to lpc17xx_uart.o(.text) for UART0_StdIntHandler
+    firm_uart.o(.text) refers to firm_uart.o(.bss) for .bss
+    firm_uart.o(.text) refers to firm_uart.o(.data) for .data
+    spi_msd_driver.o(.text) refers to lpc17xx_ssp.o(.text) for SSP_ConfigStructInit
+    spi_msd_driver.o(.text) refers to lpc17xx_pinsel.o(.text) for PINSEL_ConfigPin
+    spi_msd_driver.o(.text) refers to lpc17xx_gpio.o(.text) for GPIO_SetDir
+    spi_msd_driver.o(.text) refers to spi_msd_driver.o(i._spi_read_write) for _spi_read_write
+    spi_msd_driver.o(.text) refers to spi_msd_driver.o(.bss) for .bss
+    diskio.o(.text) refers to spi_msd_driver.o(.text) for MSD_Init
+    diskio.o(.text) refers to spi_msd_driver.o(.bss) for CardInfo
+    ff.o(.text) refers to diskio.o(.text) for disk_write
+    ff.o(.text) refers to ff.o(.data) for .data
+    queue.o(.text) refers to port.o(.text) for vPortEnterCritical
+    queue.o(.text) refers to list.o(.text) for vListInitialise
+    queue.o(.text) refers to tasks.o(.text) for xTaskRemoveFromEventList
+    queue.o(.text) refers to heap_1.o(.text) for pvPortMalloc
+    queue.o(.text) refers to memcpya.o(.text) for __aeabi_memcpy
+    queue.o(.text) refers to port.o(.emb_text) for vPortSetInterruptMask
+    tasks.o(.text) refers to heap_1.o(.text) for pvPortMalloc
+    tasks.o(.text) refers to memseta.o(.text) for __aeabi_memset
+    tasks.o(.text) refers to strncpy.o(.text) for strncpy
+    tasks.o(.text) refers to list.o(.text) for vListInitialiseItem
+    tasks.o(.text) refers to port.o(.text) for pxPortInitialiseStack
+    tasks.o(.text) refers to tasks.o(.data) for .data
+    tasks.o(.text) refers to tasks.o(.bss) for .bss
+    tasks.o(.text) refers to port.o(.emb_text) for vPortSetInterruptMask
+    tasks.o(.text) refers to main.o(.text) for vApplicationIdleHook
+    port.o(.emb_text) refers to tasks.o(.text) for vTaskSwitchContext
+    port.o(.emb_text) refers to tasks.o(.data) for pxCurrentTCB
+    port.o(.text) refers to port.o(.emb_text) for vPortStartFirstTask
+    port.o(.text) refers to tasks.o(.text) for vTaskIncrementTick
+    port.o(.text) refers to system_lpc17xx.o(.data) for SystemCoreClock
+    port.o(.text) refers to port.o(.data) for .data
+    heap_1.o(.text) refers to tasks.o(.text) for vTaskSuspendAll
+    heap_1.o(.text) refers to heap_1.o(.data) for .data
+    heap_1.o(.text) refers to heap_1.o(.bss) for .bss
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry8b.o(.ARM.Collect$$$$0000000A) for _main_cpp_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry9a.o(.ARM.Collect$$$$0000000B) for _main_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    uldiv.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+    uldiv.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
+    entry2.o(.ARM.Collect$$$$00002712) refers to startup_lpc17xx.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to startup_lpc17xx.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
+    entry9a.o(.ARM.Collect$$$$0000000B) refers to main.o(.text) for main
+    entry9b.o(.ARM.Collect$$$$0000000C) refers to main.o(.text) for main
+    init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
+    spi_msd_driver.o(i._spi_read_write) refers to lpc17xx_ssp.o(.text) for SSP_GetStatus
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing startup_lpc17xx.o(HEAP), (0 bytes).
+    Removing system_lpc17xx.o(.emb_text), (8 bytes).
+    Removing main.o(.emb_text), (8 bytes).
+    Removing main.o(.data), (9 bytes).
+    Removing main.o(.data), (8 bytes).
+    Removing main.o(.data), (12 bytes).
+    Removing main.o(.data), (9 bytes).
+    Removing main.o(.data), (6 bytes).
+    Removing main.o(.data), (10 bytes).
+    Removing main.o(.data), (9 bytes).
+    Removing main.o(.data), (6 bytes).
+    Removing main.o(.data), (16 bytes).
+    Removing main.o(.data), (13 bytes).
+    Removing main.o(.data), (12 bytes).
+    Removing main.o(.data), (8 bytes).
+    Removing main.o(.data), (7 bytes).
+    Removing lpc17xx_clkpwr.o(.emb_text), (8 bytes).
+    Removing lpc17xx_gpio.o(.emb_text), (8 bytes).
+    Removing lpc17xx_pinsel.o(.emb_text), (8 bytes).
+    Removing lpc17xx_nvic.o(.emb_text), (8 bytes).
+    Removing lpc17xx_nvic.o(.text), (144 bytes).
+    Removing lpc17xx_rit.o(.emb_text), (8 bytes).
+    Removing lpc17xx_rtc.o(.emb_text), (8 bytes).
+    Removing lpc17xx_uart.o(.emb_text), (8 bytes).
+    Removing lpc17xx_ssp.o(.emb_text), (8 bytes).
+    Removing firm_app.o(.emb_text), (8 bytes).
+    Removing firm_lcd.o(.emb_text), (8 bytes).
+    Removing firm_lcd.o(.constdata), (16 bytes).
+    Removing firm_teclado.o(.emb_text), (8 bytes).
+    Removing firm_uart.o(.emb_text), (8 bytes).
+    Removing spi_msd_driver.o(.emb_text), (8 bytes).
+    Removing diskio.o(.emb_text), (8 bytes).
+    Removing ff.o(.emb_text), (8 bytes).
+    Removing list.o(.emb_text), (8 bytes).
+    Removing queue.o(.emb_text), (8 bytes).
+    Removing tasks.o(.emb_text), (8 bytes).
+    Removing timers.o(.emb_text), (8 bytes).
+    Removing heap_1.o(.emb_text), (8 bytes).
+
+38 unused section(s) (total 461 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    RESET                                    0x00000000   Section      204  startup_lpc17xx.o(RESET)
+    ../clib/../cmprslib/zerorunl2.c          0x00000000   Number         0  __dczerorl2.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
+    ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
+    ../clib/microlib/string/strncpy.c        0x00000000   Number         0  strncpy.o ABSOLUTE
+    FreeRTOS-Source\\list.c                  0x00000000   Number         0  list.o ABSOLUTE
+    FreeRTOS-Source\\portable\\MemMang\\heap_1.c 0x00000000   Number         0  heap_1.o ABSOLUTE
+    FreeRTOS-Source\\portable\\RVDS\\ARM_CM3\\port.c 0x00000000   Number         0  port.o ABSOLUTE
+    FreeRTOS-Source\\queue.c                 0x00000000   Number         0  queue.o ABSOLUTE
+    FreeRTOS-Source\\tasks.c                 0x00000000   Number         0  tasks.o ABSOLUTE
+    FreeRTOS-Source\\timers.c                0x00000000   Number         0  timers.o ABSOLUTE
+    FreeRTOS-Source\list.c                   0x00000000   Number         0  list.o ABSOLUTE
+    FreeRTOS-Source\portable\MemMang\heap_1.c 0x00000000   Number         0  heap_1.o ABSOLUTE
+    FreeRTOS-Source\portable\RVDS\ARM_CM3\port.c 0x00000000   Number         0  port.o ABSOLUTE
+    FreeRTOS-Source\queue.c                  0x00000000   Number         0  queue.o ABSOLUTE
+    FreeRTOS-Source\tasks.c                  0x00000000   Number         0  tasks.o ABSOLUTE
+    FreeRTOS-Source\timers.c                 0x00000000   Number         0  timers.o ABSOLUTE
+    Lib_CMSIS\\src\\system_LPC17xx.c         0x00000000   Number         0  system_lpc17xx.o ABSOLUTE
+    Lib_CMSIS\src\core_cm3.c                 0x00000000   Number         0  core_cm3.o ABSOLUTE
+    Lib_CMSIS\src\system_LPC17xx.c           0x00000000   Number         0  system_lpc17xx.o ABSOLUTE
+    Lib_Driver\Perif\source\lpc17xx_clkpwr.c 0x00000000   Number         0  lpc17xx_clkpwr.o ABSOLUTE
+    Lib_Driver\Perif\source\lpc17xx_gpio.c   0x00000000   Number         0  lpc17xx_gpio.o ABSOLUTE
+    Lib_Driver\Perif\source\lpc17xx_libcfg_default.c 0x00000000   Number         0  lpc17xx_libcfg_default.o ABSOLUTE
+    Lib_Driver\Perif\source\lpc17xx_nvic.c   0x00000000   Number         0  lpc17xx_nvic.o ABSOLUTE
+    Lib_Driver\Perif\source\lpc17xx_pinsel.c 0x00000000   Number         0  lpc17xx_pinsel.o ABSOLUTE
+    Lib_Driver\Perif\source\lpc17xx_rit.c    0x00000000   Number         0  lpc17xx_rit.o ABSOLUTE
+    Lib_Driver\Perif\source\lpc17xx_rtc.c    0x00000000   Number         0  lpc17xx_rtc.o ABSOLUTE
+    Lib_Driver\Perif\source\lpc17xx_ssp.c    0x00000000   Number         0  lpc17xx_ssp.o ABSOLUTE
+    Lib_Driver\Perif\source\lpc17xx_uart.c   0x00000000   Number         0  lpc17xx_uart.o ABSOLUTE
+    Lib_Driver\SD\src\SPI_MSD_Driver.c       0x00000000   Number         0  spi_msd_driver.o ABSOLUTE
+    Lib_Driver\\Perif\\source\\lpc17xx_clkpwr.c 0x00000000   Number         0  lpc17xx_clkpwr.o ABSOLUTE
+    Lib_Driver\\Perif\\source\\lpc17xx_gpio.c 0x00000000   Number         0  lpc17xx_gpio.o ABSOLUTE
+    Lib_Driver\\Perif\\source\\lpc17xx_nvic.c 0x00000000   Number         0  lpc17xx_nvic.o ABSOLUTE
+    Lib_Driver\\Perif\\source\\lpc17xx_pinsel.c 0x00000000   Number         0  lpc17xx_pinsel.o ABSOLUTE
+    Lib_Driver\\Perif\\source\\lpc17xx_rit.c 0x00000000   Number         0  lpc17xx_rit.o ABSOLUTE
+    Lib_Driver\\Perif\\source\\lpc17xx_rtc.c 0x00000000   Number         0  lpc17xx_rtc.o ABSOLUTE
+    Lib_Driver\\Perif\\source\\lpc17xx_ssp.c 0x00000000   Number         0  lpc17xx_ssp.o ABSOLUTE
+    Lib_Driver\\Perif\\source\\lpc17xx_uart.c 0x00000000   Number         0  lpc17xx_uart.o ABSOLUTE
+    Lib_Driver\\SD\\src\\SPI_MSD_Driver.c    0x00000000   Number         0  spi_msd_driver.o ABSOLUTE
+    Lib_FatFs\\src\\diskio.c                 0x00000000   Number         0  diskio.o ABSOLUTE
+    Lib_FatFs\\src\\ff.c                     0x00000000   Number         0  ff.o ABSOLUTE
+    Lib_FatFs\src\diskio.c                   0x00000000   Number         0  diskio.o ABSOLUTE
+    Lib_FatFs\src\ff.c                       0x00000000   Number         0  ff.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    handlers.s                               0x00000000   Number         0  handlers.o ABSOLUTE
+    init.s                                   0x00000000   Number         0  init.o ABSOLUTE
+    src\\firm_app.c                          0x00000000   Number         0  firm_app.o ABSOLUTE
+    src\\firm_lcd.c                          0x00000000   Number         0  firm_lcd.o ABSOLUTE
+    src\\firm_teclado.c                      0x00000000   Number         0  firm_teclado.o ABSOLUTE
+    src\\firm_uart.c                         0x00000000   Number         0  firm_uart.o ABSOLUTE
+    src\\main.c                              0x00000000   Number         0  main.o ABSOLUTE
+    src\firm_app.c                           0x00000000   Number         0  firm_app.o ABSOLUTE
+    src\firm_lcd.c                           0x00000000   Number         0  firm_lcd.o ABSOLUTE
+    src\firm_teclado.c                       0x00000000   Number         0  firm_teclado.o ABSOLUTE
+    src\firm_uart.c                          0x00000000   Number         0  firm_uart.o ABSOLUTE
+    src\main.c                               0x00000000   Number         0  main.o ABSOLUTE
+    startup_LPC17xx.s                        0x00000000   Number         0  startup_lpc17xx.o ABSOLUTE
+    .ARM.Collect$$$$00000000                 0x000000cc   Section        0  entry.o(.ARM.Collect$$$$00000000)
+    .ARM.Collect$$$$00000001                 0x000000cc   Section        4  entry2.o(.ARM.Collect$$$$00000001)
+    .ARM.Collect$$$$00000004                 0x000000d0   Section        4  entry5.o(.ARM.Collect$$$$00000004)
+    .ARM.Collect$$$$00000008                 0x000000d4   Section        0  entry7b.o(.ARM.Collect$$$$00000008)
+    .ARM.Collect$$$$0000000A                 0x000000d4   Section        0  entry8b.o(.ARM.Collect$$$$0000000A)
+    .ARM.Collect$$$$0000000B                 0x000000d4   Section        8  entry9a.o(.ARM.Collect$$$$0000000B)
+    .ARM.Collect$$$$0000000D                 0x000000dc   Section        0  entry10a.o(.ARM.Collect$$$$0000000D)
+    .ARM.Collect$$$$0000000F                 0x000000dc   Section        0  entry11a.o(.ARM.Collect$$$$0000000F)
+    .ARM.Collect$$$$00002712                 0x000000dc   Section        4  entry2.o(.ARM.Collect$$$$00002712)
+    __lit__00000000                          0x000000dc   Data           4  entry2.o(.ARM.Collect$$$$00002712)
+    .emb_text                                0x000000e0   Section      140  port.o(.emb_text)
+    .text                                    0x0000016c   Section       36  startup_lpc17xx.o(.text)
+    .text                                    0x00000190   Section        0  lpc17xx_clkpwr.o(.text)
+    .text                                    0x00000278   Section        0  heap_1.o(.text)
+    .text                                    0x000002dc   Section        0  strncpy.o(.text)
+    i.__scatterload_null                     0x000002f4   Section        2  handlers.o(i.__scatterload_null)
+    .ARM.__at_0x02FC                         0x000002fc   Section        4  startup_lpc17xx.o(.ARM.__at_0x02FC)
+    .text                                    0x00000300   Section        0  system_lpc17xx.o(.text)
+    .text                                    0x00000484   Section        0  main.o(.text)
+    NVIC_EnableIRQ                           0x0000107b   Thumb Code    24  main.o(.text)
+    .text                                    0x00001104   Section        0  lpc17xx_gpio.o(.text)
+    GPIO_GetPointer                          0x00001105   Thumb Code    46  lpc17xx_gpio.o(.text)
+    FIO_HalfWordGetPointer                   0x00001133   Thumb Code    46  lpc17xx_gpio.o(.text)
+    FIO_ByteGetPointer                       0x00001161   Thumb Code    46  lpc17xx_gpio.o(.text)
+    .text                                    0x00001348   Section        0  lpc17xx_pinsel.o(.text)
+    .text                                    0x00001404   Section        0  lpc17xx_rit.o(.text)
+    .text                                    0x000014a4   Section        0  lpc17xx_rtc.o(.text)
+    .text                                    0x000018fc   Section        0  lpc17xx_uart.o(.text)
+    .text                                    0x00001e74   Section        0  lpc17xx_ssp.o(.text)
+    SSP_getNum                               0x000022e3   Thumb Code    26  lpc17xx_ssp.o(.text)
+    .text                                    0x00002308   Section        0  firm_app.o(.text)
+    .text                                    0x000023d4   Section        0  firm_lcd.o(.text)
+    .text                                    0x00002528   Section        0  firm_teclado.o(.text)
+    .text                                    0x00002684   Section        0  firm_uart.o(.text)
+    .text                                    0x000027e0   Section        0  spi_msd_driver.o(.text)
+    .text                                    0x000030f4   Section        0  diskio.o(.text)
+    .text                                    0x000031b0   Section        0  ff.o(.text)
+    move_window                              0x000031b1   Thumb Code   106  ff.o(.text)
+    sync                                     0x0000321b   Thumb Code   182  ff.o(.text)
+    remove_chain                             0x00003497   Thumb Code    96  ff.o(.text)
+    create_chain                             0x000034f7   Thumb Code   148  ff.o(.text)
+    dir_sdi                                  0x0000358b   Thumb Code   126  ff.o(.text)
+    dir_next                                 0x00003609   Thumb Code   234  ff.o(.text)
+    dir_read                                 0x000036f3   Thumb Code    68  ff.o(.text)
+    dir_register                             0x00003737   Thumb Code    92  ff.o(.text)
+    dir_remove                               0x00003793   Thumb Code    40  ff.o(.text)
+    create_name                              0x000037bb   Thumb Code   250  ff.o(.text)
+    get_fileinfo                             0x000038b5   Thumb Code    96  ff.o(.text)
+    follow_path                              0x00003915   Thumb Code   172  ff.o(.text)
+    check_fs                                 0x000039c1   Thumb Code    86  ff.o(.text)
+    chk_mounted                              0x00003a17   Thumb Code   542  ff.o(.text)
+    mem_cpy                                  0x00004a37   Thumb Code    16  ff.o(.text)
+    mem_set                                  0x00004a47   Thumb Code    14  ff.o(.text)
+    validate                                 0x00004a55   Thumb Code    32  ff.o(.text)
+    .text                                    0x00004a74   Section        0  list.o(.text)
+    .text                                    0x00004b00   Section        0  queue.o(.text)
+    prvUnlockQueue                           0x00004b9b   Thumb Code   100  queue.o(.text)
+    prvCopyDataToQueue                       0x00004bff   Thumb Code    90  queue.o(.text)
+    prvCopyDataFromQueue                     0x00004ddf   Thumb Code    40  queue.o(.text)
+    .text                                    0x00004fac   Section        0  tasks.o(.text)
+    prvAddCurrentTaskToDelayedList           0x000052cf   Thumb Code    48  tasks.o(.text)
+    prvIdleTask                              0x0000561d   Thumb Code    10  tasks.o(.text)
+    prvCheckTasksWaitingTermination          0x00005881   Thumb Code    82  tasks.o(.text)
+    .text                                    0x000058dc   Section        0  port.o(.text)
+    .text                                    0x00005988   Section        0  uldiv.o(.text)
+    .text                                    0x000059ea   Section        0  memcpya.o(.text)
+    .text                                    0x00005a0e   Section        0  memseta.o(.text)
+    .text                                    0x00005a32   Section        0  llshl.o(.text)
+    .text                                    0x00005a50   Section        0  llushr.o(.text)
+    .text                                    0x00005a70   Section       36  init.o(.text)
+    .text                                    0x00005a94   Section        0  __dczerorl2.o(.text)
+    i.__scatterload_copy                     0x00005af0   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_zeroinit                 0x00005afe   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._spi_read_write                        0x00005b0c   Section        0  spi_msd_driver.o(i._spi_read_write)
+    .data                                    0x10000000   Section        4  system_lpc17xx.o(.data)
+    .data                                    0x10000004   Section        1  main.o(.data)
+    .data                                    0x10000008   Section      339  main.o(.data)
+    OO_LED1                                  0x10000008   Data           1  main.o(.data)
+    indice                                   0x10000009   Data           1  main.o(.data)
+    estado_MENU                              0x1000000a   Data           1  main.o(.data)
+    intentos                                 0x1000000b   Data           1  main.o(.data)
+    .data                                    0x1000015c   Section        4  lpc17xx_uart.o(.data)
+    .data                                    0x10000160   Section       12  firm_app.o(.data)
+    tiempo                                   0x10000164   Data           4  firm_app.o(.data)
+    i                                        0x10000168   Data           4  firm_app.o(.data)
+    .data                                    0x1000016c   Section        3  firm_teclado.o(.data)
+    CodigoAnterior                           0x1000016c   Data           1  firm_teclado.o(.data)
+    EstadosEstables                          0x1000016d   Data           1  firm_teclado.o(.data)
+    CodigoActual                             0x1000016e   Data           1  firm_teclado.o(.data)
+    .data                                    0x1000016f   Section        1  firm_uart.o(.data)
+    .data                                    0x10000170   Section        8  ff.o(.data)
+    Fsid                                     0x10000170   Data           2  ff.o(.data)
+    FatFs                                    0x10000174   Data           4  ff.o(.data)
+    .data                                    0x10000178   Section       60  tasks.o(.data)
+    uxTasksDeleted                           0x1000017c   Data           4  tasks.o(.data)
+    uxCurrentNumberOfTasks                   0x10000180   Data           4  tasks.o(.data)
+    xTickCount                               0x10000184   Data           4  tasks.o(.data)
+    uxTopUsedPriority                        0x10000188   Data           4  tasks.o(.data)
+    uxTopReadyPriority                       0x1000018c   Data           4  tasks.o(.data)
+    xSchedulerRunning                        0x10000190   Data           4  tasks.o(.data)
+    uxSchedulerSuspended                     0x10000194   Data           4  tasks.o(.data)
+    uxMissedTicks                            0x10000198   Data           4  tasks.o(.data)
+    xMissedYield                             0x1000019c   Data           4  tasks.o(.data)
+    xNumOfOverflows                          0x100001a0   Data           4  tasks.o(.data)
+    uxTaskNumber                             0x100001a4   Data           4  tasks.o(.data)
+    xNextTaskUnblockTime                     0x100001a8   Data           4  tasks.o(.data)
+    pxDelayedTaskList                        0x100001ac   Data           4  tasks.o(.data)
+    pxOverflowDelayedTaskList                0x100001b0   Data           4  tasks.o(.data)
+    .data                                    0x100001b4   Section        4  port.o(.data)
+    uxCriticalNesting                        0x100001b4   Data           4  port.o(.data)
+    .data                                    0x100001b8   Section        8  heap_1.o(.data)
+    xNextFreeByte                            0x100001b8   Data           4  heap_1.o(.data)
+    pucAlignedHeap                           0x100001bc   Data           4  heap_1.o(.data)
+    .bss                                     0x100001c0   Section     1764  main.o(.bss)
+    buffer_hora                              0x100001c0   Data          17  main.o(.bss)
+    .bss                                     0x100008a4   Section       64  lpc17xx_uart.o(.bss)
+    .bss                                     0x100008e4   Section       24  lpc17xx_ssp.o(.bss)
+    sspdat                                   0x100008e4   Data          24  lpc17xx_ssp.o(.bss)
+    .bss                                     0x100008fc   Section      528  firm_uart.o(.bss)
+    .bss                                     0x10000b0c   Section       88  spi_msd_driver.o(.bss)
+    .bss                                     0x10000b64   Section      160  tasks.o(.bss)
+    pxReadyTasksLists                        0x10000b64   Data          60  tasks.o(.bss)
+    xDelayedTaskList1                        0x10000ba0   Data          20  tasks.o(.bss)
+    xDelayedTaskList2                        0x10000bb4   Data          20  tasks.o(.bss)
+    xPendingReadyList                        0x10000bc8   Data          20  tasks.o(.bss)
+    xTasksWaitingTermination                 0x10000bdc   Data          20  tasks.o(.bss)
+    xSuspendedTaskList                       0x10000bf0   Data          20  tasks.o(.bss)
+    .bss                                     0x10000c04   Section     8192  heap_1.o(.bss)
+    ucHeap                                   0x10000c04   Data        8192  heap_1.o(.bss)
+    STACK                                    0x10002c08   Section      512  startup_lpc17xx.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __ARM_use_no_argv                        0x00000000   Number         0  main.o ABSOLUTE
+    __Vectors                                0x00000000   Data           4  startup_lpc17xx.o(RESET)
+    __cpp_initialize__aeabi_                  - Undefined Weak Reference
+    __cxa_finalize                            - Undefined Weak Reference
+    _clock_init                               - Undefined Weak Reference
+    _microlib_exit                            - Undefined Weak Reference
+    __main                                   0x000000cd   Thumb Code     0  entry.o(.ARM.Collect$$$$00000000)
+    _main_stk                                0x000000cd   Thumb Code     0  entry2.o(.ARM.Collect$$$$00000001)
+    _main_scatterload                        0x000000d1   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    __main_after_scatterload                 0x000000d5   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    _main_clock                              0x000000d5   Thumb Code     0  entry7b.o(.ARM.Collect$$$$00000008)
+    _main_cpp_init                           0x000000d5   Thumb Code     0  entry8b.o(.ARM.Collect$$$$0000000A)
+    _main_init                               0x000000d5   Thumb Code     0  entry9a.o(.ARM.Collect$$$$0000000B)
+    __rt_final_cpp                           0x000000dd   Thumb Code     0  entry10a.o(.ARM.Collect$$$$0000000D)
+    __rt_final_exit                          0x000000dd   Thumb Code     0  entry11a.o(.ARM.Collect$$$$0000000F)
+    __asm___6_port_c_39a90d8d____REV16       0x000000e1   Thumb Code     4  port.o(.emb_text)
+    __asm___6_port_c_39a90d8d____REVSH       0x000000e5   Thumb Code     4  port.o(.emb_text)
+    SVC_Handler                              0x000000e9   Thumb Code    28  port.o(.emb_text)
+    vPortStartFirstTask                      0x00000109   Thumb Code    16  port.o(.emb_text)
+    PendSV_Handler                           0x0000011d   Thumb Code    56  port.o(.emb_text)
+    vPortSetInterruptMask                    0x00000159   Thumb Code    10  port.o(.emb_text)
+    vPortClearInterruptMask                  0x00000163   Thumb Code    10  port.o(.emb_text)
+    Reset_Handler                            0x0000016d   Thumb Code     8  startup_lpc17xx.o(.text)
+    NMI_Handler                              0x00000175   Thumb Code     2  startup_lpc17xx.o(.text)
+    HardFault_Handler                        0x00000177   Thumb Code     2  startup_lpc17xx.o(.text)
+    MemManage_Handler                        0x00000179   Thumb Code     2  startup_lpc17xx.o(.text)
+    BusFault_Handler                         0x0000017b   Thumb Code     2  startup_lpc17xx.o(.text)
+    UsageFault_Handler                       0x0000017d   Thumb Code     2  startup_lpc17xx.o(.text)
+    DebugMon_Handler                         0x00000181   Thumb Code     2  startup_lpc17xx.o(.text)
+    ADC_IRQHandler                           0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    BOD_IRQHandler                           0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    CANActivity_IRQHandler                   0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    CAN_IRQHandler                           0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    DMA_IRQHandler                           0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    EINT0_IRQHandler                         0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    EINT1_IRQHandler                         0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    EINT2_IRQHandler                         0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    EINT3_IRQHandler                         0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    ENET_IRQHandler                          0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    I2C0_IRQHandler                          0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    I2C1_IRQHandler                          0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    I2C2_IRQHandler                          0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    I2S_IRQHandler                           0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    MCPWM_IRQHandler                         0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    PLL0_IRQHandler                          0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    PLL1_IRQHandler                          0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    PWM1_IRQHandler                          0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    QEI_IRQHandler                           0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    RTC_IRQHandler                           0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    SPI_IRQHandler                           0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    SSP0_IRQHandler                          0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    SSP1_IRQHandler                          0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    TIMER0_IRQHandler                        0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    TIMER1_IRQHandler                        0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    TIMER2_IRQHandler                        0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    TIMER3_IRQHandler                        0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    UART1_IRQHandler                         0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    UART2_IRQHandler                         0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    UART3_IRQHandler                         0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    USBActivity_IRQHandler                   0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    USB_IRQHandler                           0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    WDT_IRQHandler                           0x00000187   Thumb Code     0  startup_lpc17xx.o(.text)
+    CLKPWR_SetPCLKDiv                        0x00000191   Thumb Code    52  lpc17xx_clkpwr.o(.text)
+    CLKPWR_GetPCLKSEL                        0x000001c5   Thumb Code    26  lpc17xx_clkpwr.o(.text)
+    CLKPWR_GetPCLK                           0x000001df   Thumb Code    38  lpc17xx_clkpwr.o(.text)
+    CLKPWR_ConfigPPWR                        0x00000205   Thumb Code    34  lpc17xx_clkpwr.o(.text)
+    CLKPWR_Sleep                             0x00000227   Thumb Code    12  lpc17xx_clkpwr.o(.text)
+    CLKPWR_DeepSleep                         0x00000233   Thumb Code    18  lpc17xx_clkpwr.o(.text)
+    CLKPWR_PowerDown                         0x00000245   Thumb Code    18  lpc17xx_clkpwr.o(.text)
+    CLKPWR_DeepPowerDown                     0x00000257   Thumb Code    18  lpc17xx_clkpwr.o(.text)
+    pvPortMalloc                             0x00000279   Thumb Code    68  heap_1.o(.text)
+    vPortFree                                0x000002bd   Thumb Code     2  heap_1.o(.text)
+    vPortInitialiseBlocks                    0x000002bf   Thumb Code     8  heap_1.o(.text)
+    xPortGetFreeHeapSize                     0x000002c7   Thumb Code    12  heap_1.o(.text)
+    strncpy                                  0x000002dd   Thumb Code    24  strncpy.o(.text)
+    __scatterload_null                       0x000002f5   Thumb Code     2  handlers.o(i.__scatterload_null)
+    SystemCoreClockUpdate                    0x00000301   Thumb Code   188  system_lpc17xx.o(.text)
+    SystemInit                               0x000003bd   Thumb Code   168  system_lpc17xx.o(.text)
+    RIT_IRQHandler                           0x00000485   Thumb Code    18  main.o(.text)
+    vID                                      0x00000497   Thumb Code   598  main.o(.text)
+    vPUERTA                                  0x000006ed   Thumb Code    78  main.o(.text)
+    vSD                                      0x0000073b   Thumb Code   770  main.o(.text)
+    vTECLADO                                 0x00000a3d   Thumb Code    58  main.o(.text)
+    vSETEO                                   0x00000a77   Thumb Code   932  main.o(.text)
+    vOOLED1                                  0x00000e1b   Thumb Code    48  main.o(.text)
+    main                                     0x00000e4b   Thumb Code   558  main.o(.text)
+    vApplicationIdleHook                     0x00001079   Thumb Code     2  main.o(.text)
+    GPIO_SetDir                              0x0000118f   Thumb Code    28  lpc17xx_gpio.o(.text)
+    GPIO_SetValue                            0x000011ab   Thumb Code    16  lpc17xx_gpio.o(.text)
+    GPIO_ClearValue                          0x000011bb   Thumb Code    16  lpc17xx_gpio.o(.text)
+    GPIO_ReadValue                           0x000011cb   Thumb Code    14  lpc17xx_gpio.o(.text)
+    FIO_SetDir                               0x000011d9   Thumb Code     2  lpc17xx_gpio.o(.text)
+    FIO_SetValue                             0x000011db   Thumb Code     2  lpc17xx_gpio.o(.text)
+    FIO_ClearValue                           0x000011dd   Thumb Code     2  lpc17xx_gpio.o(.text)
+    FIO_ReadValue                            0x000011df   Thumb Code     2  lpc17xx_gpio.o(.text)
+    FIO_SetMask                              0x000011e1   Thumb Code    28  lpc17xx_gpio.o(.text)
+    FIO_HalfWordSetDir                       0x000011fd   Thumb Code    50  lpc17xx_gpio.o(.text)
+    FIO_HalfWordSetMask                      0x0000122f   Thumb Code    50  lpc17xx_gpio.o(.text)
+    FIO_HalfWordSetValue                     0x00001261   Thumb Code    24  lpc17xx_gpio.o(.text)
+    FIO_HalfWordClearValue                   0x00001279   Thumb Code    24  lpc17xx_gpio.o(.text)
+    FIO_HalfWordReadValue                    0x00001291   Thumb Code    22  lpc17xx_gpio.o(.text)
+    FIO_ByteSetDir                           0x000012a7   Thumb Code    40  lpc17xx_gpio.o(.text)
+    FIO_ByteSetMask                          0x000012cf   Thumb Code    44  lpc17xx_gpio.o(.text)
+    FIO_ByteSetValue                         0x000012fb   Thumb Code    24  lpc17xx_gpio.o(.text)
+    FIO_ByteClearValue                       0x00001313   Thumb Code    24  lpc17xx_gpio.o(.text)
+    FIO_ByteReadValue                        0x0000132b   Thumb Code    24  lpc17xx_gpio.o(.text)
+    PINSEL_SetPinFunc                        0x00001349   Thumb Code    36  lpc17xx_pinsel.o(.text)
+    PINSEL_ConfigTraceFunc                   0x0000136d   Thumb Code    28  lpc17xx_pinsel.o(.text)
+    PINSEL_SetResistorMode                   0x00001389   Thumb Code    38  lpc17xx_pinsel.o(.text)
+    PINSEL_SetOpenDrainMode                  0x000013af   Thumb Code    30  lpc17xx_pinsel.o(.text)
+    PINSEL_SetI2C0Pins                       0x000013cd   Thumb Code    16  lpc17xx_pinsel.o(.text)
+    PINSEL_ConfigPin                         0x000013dd   Thumb Code    36  lpc17xx_pinsel.o(.text)
+    RIT_Init                                 0x00001405   Thumb Code    30  lpc17xx_rit.o(.text)
+    RIT_DeInit                               0x00001423   Thumb Code    32  lpc17xx_rit.o(.text)
+    RIT_TimerConfig                          0x00001443   Thumb Code    14  lpc17xx_rit.o(.text)
+    RIT_Cmd                                  0x00001451   Thumb Code    20  lpc17xx_rit.o(.text)
+    RIT_TimerClearCmd                        0x00001465   Thumb Code    20  lpc17xx_rit.o(.text)
+    RIT_TimerEnableOnBreakCmd                0x00001479   Thumb Code    20  lpc17xx_rit.o(.text)
+    RIT_GetIntStatus                         0x0000148d   Thumb Code    24  lpc17xx_rit.o(.text)
+    RTC_Init                                 0x000014a5   Thumb Code    28  lpc17xx_rtc.o(.text)
+    RTC_DeInit                               0x000014c1   Thumb Code    12  lpc17xx_rtc.o(.text)
+    RTC_ResetClockTickCounter                0x000014cd   Thumb Code    18  lpc17xx_rtc.o(.text)
+    RTC_Cmd                                  0x000014df   Thumb Code    20  lpc17xx_rtc.o(.text)
+    RTC_CntIncrIntConfig                     0x000014f3   Thumb Code   166  lpc17xx_rtc.o(.text)
+    RTC_AlarmIntConfig                       0x00001599   Thumb Code   166  lpc17xx_rtc.o(.text)
+    RTC_SetTime                              0x0000163f   Thumb Code    86  lpc17xx_rtc.o(.text)
+    RTC_GetTime                              0x00001695   Thumb Code    88  lpc17xx_rtc.o(.text)
+    RTC_SetFullTime                          0x000016ed   Thumb Code    68  lpc17xx_rtc.o(.text)
+    RTC_GetFullTime                          0x00001731   Thumb Code    68  lpc17xx_rtc.o(.text)
+    RTC_SetAlarmTime                         0x00001775   Thumb Code    90  lpc17xx_rtc.o(.text)
+    RTC_GetAlarmTime                         0x000017cf   Thumb Code    92  lpc17xx_rtc.o(.text)
+    RTC_SetFullAlarmTime                     0x0000182b   Thumb Code    68  lpc17xx_rtc.o(.text)
+    RTC_GetFullAlarmTime                     0x0000186f   Thumb Code    68  lpc17xx_rtc.o(.text)
+    RTC_GetIntPending                        0x000018b3   Thumb Code    10  lpc17xx_rtc.o(.text)
+    RTC_ClearIntPending                      0x000018bd   Thumb Code     4  lpc17xx_rtc.o(.text)
+    RTC_CalibCounterCmd                      0x000018c1   Thumb Code    20  lpc17xx_rtc.o(.text)
+    RTC_CalibConfig                          0x000018d5   Thumb Code    24  lpc17xx_rtc.o(.text)
+    RTC_WriteGPREG                           0x000018ed   Thumb Code     8  lpc17xx_rtc.o(.text)
+    RTC_ReadGPREG                            0x000018f5   Thumb Code     8  lpc17xx_rtc.o(.text)
+    getUartNum                               0x000018fd   Thumb Code    34  lpc17xx_uart.o(.text)
+    uart_set_divisors                        0x0000191f   Thumb Code   242  lpc17xx_uart.o(.text)
+    UART_GenIntHandler                       0x00001a11   Thumb Code   178  lpc17xx_uart.o(.text)
+    UART_TxCmd                               0x00001ac3   Thumb Code    26  lpc17xx_uart.o(.text)
+    UART_DeInit                              0x00001add   Thumb Code    30  lpc17xx_uart.o(.text)
+    UART_Init                                0x00001afb   Thumb Code   222  lpc17xx_uart.o(.text)
+    UART_ConfigStructInit                    0x00001bd9   Thumb Code    18  lpc17xx_uart.o(.text)
+    UART_SendData                            0x00001beb   Thumb Code     6  lpc17xx_uart.o(.text)
+    UART_ReceiveData                         0x00001bf1   Thumb Code     6  lpc17xx_uart.o(.text)
+    UART_ForceBreak                          0x00001bf7   Thumb Code    12  lpc17xx_uart.o(.text)
+    UART_IntConfig                           0x00001c03   Thumb Code    84  lpc17xx_uart.o(.text)
+    UART_GetLineStatus                       0x00001c57   Thumb Code    14  lpc17xx_uart.o(.text)
+    UART_CheckBusy                           0x00001c65   Thumb Code    14  lpc17xx_uart.o(.text)
+    UART_FIFOConfig                          0x00001c73   Thumb Code    64  lpc17xx_uart.o(.text)
+    UART_FIFOConfigStructInit                0x00001cb3   Thumb Code    14  lpc17xx_uart.o(.text)
+    UART_ABCmd                               0x00001cc1   Thumb Code   132  lpc17xx_uart.o(.text)
+    UART_Send                                0x00001d45   Thumb Code   122  lpc17xx_uart.o(.text)
+    UART_Receive                             0x00001dbf   Thumb Code    82  lpc17xx_uart.o(.text)
+    UART_SetupCbs                            0x00001e11   Thumb Code    60  lpc17xx_uart.o(.text)
+    UART0_StdIntHandler                      0x00001e4d   Thumb Code     4  lpc17xx_uart.o(.text)
+    UART1_StdIntHandler                      0x00001e51   Thumb Code     4  lpc17xx_uart.o(.text)
+    UART2_StdIntHandler                      0x00001e55   Thumb Code     4  lpc17xx_uart.o(.text)
+    UART3_StdIntHandler                      0x00001e59   Thumb Code     4  lpc17xx_uart.o(.text)
+    SSP_ReceiveData                          0x00001e75   Thumb Code     6  lpc17xx_ssp.o(.text)
+    SSP_SendData                             0x00001e7b   Thumb Code     4  lpc17xx_ssp.o(.text)
+    SSP_IntHandler                           0x00001e7f   Thumb Code   284  lpc17xx_ssp.o(.text)
+    SSP_SetClock                             0x00001f9b   Thumb Code    90  lpc17xx_ssp.o(.text)
+    SSP_DeInit                               0x00001ff5   Thumb Code    30  lpc17xx_ssp.o(.text)
+    SSP_Init                                 0x00002013   Thumb Code    98  lpc17xx_ssp.o(.text)
+    SSP_ConfigStructInit                     0x00002075   Thumb Code    20  lpc17xx_ssp.o(.text)
+    SSP_Cmd                                  0x00002089   Thumb Code    20  lpc17xx_ssp.o(.text)
+    SSP_LoopBackCmd                          0x0000209d   Thumb Code    20  lpc17xx_ssp.o(.text)
+    SSP_SlaveOutputCmd                       0x000020b1   Thumb Code    20  lpc17xx_ssp.o(.text)
+    SSP_ReadWrite                            0x000020c5   Thumb Code   452  lpc17xx_ssp.o(.text)
+    SSP_GetStatus                            0x00002289   Thumb Code    10  lpc17xx_ssp.o(.text)
+    SSP_IntConfig                            0x00002293   Thumb Code    20  lpc17xx_ssp.o(.text)
+    SSP_GetRawIntStatus                      0x000022a7   Thumb Code    10  lpc17xx_ssp.o(.text)
+    SSP_GetIntStatus                         0x000022b1   Thumb Code    10  lpc17xx_ssp.o(.text)
+    SSP_ClearIntPending                      0x000022bb   Thumb Code     4  lpc17xx_ssp.o(.text)
+    SSP_DMACmd                               0x000022bf   Thumb Code    20  lpc17xx_ssp.o(.text)
+    SSP0_StdIntHandler                       0x000022d3   Thumb Code     8  lpc17xx_ssp.o(.text)
+    SSP1_StdIntHandler                       0x000022db   Thumb Code     8  lpc17xx_ssp.o(.text)
+    Ra_Delay                                 0x00002309   Thumb Code    30  firm_app.o(.text)
+    Ra_DelayHold                             0x00002327   Thumb Code    16  firm_app.o(.text)
+    Ra_Parpadeo                              0x00002337   Thumb Code    44  firm_app.o(.text)
+    Ra_Parpadeo2                             0x00002363   Thumb Code    44  firm_app.o(.text)
+    Ra_Comparar                              0x0000238f   Thumb Code    58  firm_app.o(.text)
+    LCD_Delay                                0x000023d5   Thumb Code    20  firm_lcd.o(.text)
+    LCD_Delay_40ns                           0x000023e9   Thumb Code    20  firm_lcd.o(.text)
+    LCD_WrtNibble                            0x000023fd   Thumb Code    30  firm_lcd.o(.text)
+    LCD_WrtCmd                               0x0000241b   Thumb Code    50  firm_lcd.o(.text)
+    LCD_WrtData                              0x0000244d   Thumb Code    50  firm_lcd.o(.text)
+    LCD_WrtString                            0x0000247f   Thumb Code    26  firm_lcd.o(.text)
+    LCD_GoToXY                               0x00002499   Thumb Code    12  firm_lcd.o(.text)
+    LCD_Init                                 0x000024a5   Thumb Code   116  firm_lcd.o(.text)
+    TECLADO_Config                           0x00002529   Thumb Code    38  firm_teclado.o(.text)
+    TECLADO_Lectura                          0x0000254f   Thumb Code   208  firm_teclado.o(.text)
+    TECLADO_AntiRebote                       0x0000261f   Thumb Code    66  firm_teclado.o(.text)
+    TECLADO_HayTecla                         0x00002661   Thumb Code    16  firm_teclado.o(.text)
+    TECLADO_LeerTecla                        0x00002671   Thumb Code    10  firm_teclado.o(.text)
+    UART0_IRQHandler                         0x00002685   Thumb Code     4  firm_uart.o(.text)
+    UART_IntReceive                          0x00002689   Thumb Code    42  firm_uart.o(.text)
+    UART_IntTransmit                         0x000026b3   Thumb Code    92  firm_uart.o(.text)
+    UART_IntErr                              0x0000270f   Thumb Code     2  firm_uart.o(.text)
+    UARTSend                                 0x00002711   Thumb Code   106  firm_uart.o(.text)
+    UARTReceive                              0x0000277b   Thumb Code    80  firm_uart.o(.text)
+    MSD_SPIHighSpeed                         0x000027e1   Thumb Code    44  spi_msd_driver.o(.text)
+    MSD_SPI_Configuration                    0x0000280d   Thumb Code   180  spi_msd_driver.o(.text)
+    _send_command_hold                       0x000028c1   Thumb Code    90  spi_msd_driver.o(.text)
+    _send_command                            0x0000291b   Thumb Code   112  spi_msd_driver.o(.text)
+    MSD_Init                                 0x0000298b   Thumb Code   444  spi_msd_driver.o(.text)
+    _read_buffer                             0x00002b47   Thumb Code   122  spi_msd_driver.o(.text)
+    MSD_GetCardInfo                          0x00002bc1   Thumb Code   684  spi_msd_driver.o(.text)
+    MSD_ReadSingleBlock                      0x00002e6d   Thumb Code    62  spi_msd_driver.o(.text)
+    MSD_ReadMultiBlock                       0x00002eab   Thumb Code   122  spi_msd_driver.o(.text)
+    MSD_WriteSingleBlock                     0x00002f25   Thumb Code   184  spi_msd_driver.o(.text)
+    MSD_WriteMultiBlock                      0x00002fdd   Thumb Code   270  spi_msd_driver.o(.text)
+    disk_initialize                          0x000030f5   Thumb Code    22  diskio.o(.text)
+    disk_status                              0x0000310b   Thumb Code    20  diskio.o(.text)
+    disk_read                                0x0000311f   Thumb Code    42  diskio.o(.text)
+    disk_write                               0x00003149   Thumb Code    42  diskio.o(.text)
+    disk_ioctl                               0x00003173   Thumb Code    54  diskio.o(.text)
+    get_fattime                              0x000031a9   Thumb Code     4  diskio.o(.text)
+    clust2sect                               0x000032d1   Thumb Code    24  ff.o(.text)
+    get_fat                                  0x000032e9   Thumb Code   182  ff.o(.text)
+    put_fat                                  0x0000339f   Thumb Code   248  ff.o(.text)
+    f_mount                                  0x00003c35   Thumb Code    26  ff.o(.text)
+    f_open                                   0x00003c4f   Thumb Code   306  ff.o(.text)
+    f_read                                   0x00003d81   Thumb Code   330  ff.o(.text)
+    f_write                                  0x00003ecb   Thumb Code   392  ff.o(.text)
+    f_sync                                   0x00004053   Thumb Code   164  ff.o(.text)
+    f_close                                  0x000040f7   Thumb Code    18  ff.o(.text)
+    f_lseek                                  0x00004109   Thumb Code   306  ff.o(.text)
+    f_opendir                                0x0000423b   Thumb Code    78  ff.o(.text)
+    f_readdir                                0x00004289   Thumb Code    80  ff.o(.text)
+    f_stat                                   0x000042d9   Thumb Code    58  ff.o(.text)
+    f_getfree                                0x00004313   Thumb Code   200  ff.o(.text)
+    f_truncate                               0x000043db   Thumb Code   144  ff.o(.text)
+    f_unlink                                 0x0000446b   Thumb Code   154  ff.o(.text)
+    f_mkdir                                  0x00004505   Thumb Code   398  ff.o(.text)
+    f_chmod                                  0x00004693   Thumb Code    74  ff.o(.text)
+    f_utime                                  0x000046dd   Thumb Code    80  ff.o(.text)
+    f_rename                                 0x0000472d   Thumb Code   256  ff.o(.text)
+    f_gets                                   0x0000482d   Thumb Code    68  ff.o(.text)
+    f_putc                                   0x00004871   Thumb Code    32  ff.o(.text)
+    f_puts                                   0x00004891   Thumb Code    40  ff.o(.text)
+    f_printf                                 0x000048b9   Thumb Code   382  ff.o(.text)
+    vListInitialise                          0x00004a75   Thumb Code    22  list.o(.text)
+    vListInitialiseItem                      0x00004a8b   Thumb Code     6  list.o(.text)
+    vListInsertEnd                           0x00004a91   Thumb Code    28  list.o(.text)
+    vListInsert                              0x00004aad   Thumb Code    48  list.o(.text)
+    vListRemove                              0x00004add   Thumb Code    36  list.o(.text)
+    xQueueGenericReset                       0x00004b01   Thumb Code    88  queue.o(.text)
+    xQueueGenericCreate                      0x00004b59   Thumb Code    66  queue.o(.text)
+    xQueueGenericSend                        0x00004c59   Thumb Code   214  queue.o(.text)
+    xQueueCreateMutex                        0x00004d2f   Thumb Code    68  queue.o(.text)
+    xQueueCreateCountingSemaphore            0x00004d73   Thumb Code    20  queue.o(.text)
+    xQueueGenericSendFromISR                 0x00004d87   Thumb Code    88  queue.o(.text)
+    xQueueGenericReceive                     0x00004e07   Thumb Code   268  queue.o(.text)
+    xQueueReceiveFromISR                     0x00004f13   Thumb Code    84  queue.o(.text)
+    uxQueueMessagesWaiting                   0x00004f67   Thumb Code    18  queue.o(.text)
+    uxQueueMessagesWaitingFromISR            0x00004f79   Thumb Code     4  queue.o(.text)
+    vQueueDelete                             0x00004f7d   Thumb Code    20  queue.o(.text)
+    xQueueIsQueueEmptyFromISR                0x00004f91   Thumb Code    12  queue.o(.text)
+    xQueueIsQueueFullFromISR                 0x00004f9d   Thumb Code    16  queue.o(.text)
+    xTaskGenericCreate                       0x00004fad   Thumb Code   360  tasks.o(.text)
+    vTaskDelete                              0x00005115   Thumb Code   118  tasks.o(.text)
+    vTaskIncrementTick                       0x0000518b   Thumb Code   156  tasks.o(.text)
+    xTaskResumeAll                           0x00005227   Thumb Code   168  tasks.o(.text)
+    vTaskSuspendAll                          0x000052ff   Thumb Code    10  tasks.o(.text)
+    vTaskDelayUntil                          0x00005309   Thumb Code   110  tasks.o(.text)
+    vTaskDelay                               0x00005377   Thumb Code    80  tasks.o(.text)
+    uxTaskPriorityGet                        0x000053c7   Thumb Code    24  tasks.o(.text)
+    vTaskPrioritySet                         0x000053df   Thumb Code   182  tasks.o(.text)
+    vTaskSwitchContext                       0x00005495   Thumb Code    56  tasks.o(.text)
+    vTaskSuspend                             0x000054cd   Thumb Code   126  tasks.o(.text)
+    xTaskIsTaskSuspended                     0x0000554b   Thumb Code    30  tasks.o(.text)
+    vTaskResume                              0x00005569   Thumb Code    86  tasks.o(.text)
+    xTaskResumeFromISR                       0x000055bf   Thumb Code    94  tasks.o(.text)
+    vTaskStartScheduler                      0x00005627   Thumb Code    50  tasks.o(.text)
+    vTaskEndScheduler                        0x00005659   Thumb Code    20  tasks.o(.text)
+    xTaskGetTickCount                        0x0000566d   Thumb Code    18  tasks.o(.text)
+    xTaskGetTickCountFromISR                 0x0000567f   Thumb Code    18  tasks.o(.text)
+    uxTaskGetNumberOfTasks                   0x00005691   Thumb Code     6  tasks.o(.text)
+    vTaskPlaceOnEventList                    0x00005697   Thumb Code    84  tasks.o(.text)
+    xTaskRemoveFromEventList                 0x000056eb   Thumb Code    82  tasks.o(.text)
+    vTaskSetTimeOutState                     0x0000573d   Thumb Code    12  tasks.o(.text)
+    xTaskCheckForTimeOut                     0x00005749   Thumb Code    72  tasks.o(.text)
+    vTaskMissedYield                         0x00005791   Thumb Code     8  tasks.o(.text)
+    xTaskGetCurrentTaskHandle                0x00005799   Thumb Code     6  tasks.o(.text)
+    vTaskPriorityInherit                     0x0000579f   Thumb Code   116  tasks.o(.text)
+    vTaskPriorityDisinherit                  0x00005813   Thumb Code   110  tasks.o(.text)
+    pxPortInitialiseStack                    0x000058dd   Thumb Code    28  port.o(.text)
+    xPortStartScheduler                      0x000058f9   Thumb Code    56  port.o(.text)
+    vPortEndScheduler                        0x00005931   Thumb Code     2  port.o(.text)
+    vPortYieldFromISR                        0x00005933   Thumb Code    12  port.o(.text)
+    vPortEnterCritical                       0x0000593f   Thumb Code    16  port.o(.text)
+    vPortExitCritical                        0x0000594f   Thumb Code    16  port.o(.text)
+    SysTick_Handler                          0x0000595f   Thumb Code    28  port.o(.text)
+    __aeabi_uldivmod                         0x00005989   Thumb Code    98  uldiv.o(.text)
+    __aeabi_memcpy                           0x000059eb   Thumb Code    36  memcpya.o(.text)
+    __aeabi_memcpy4                          0x000059eb   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memcpy8                          0x000059eb   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memset                           0x00005a0f   Thumb Code    14  memseta.o(.text)
+    __aeabi_memset4                          0x00005a0f   Thumb Code     0  memseta.o(.text)
+    __aeabi_memset8                          0x00005a0f   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr                           0x00005a1d   Thumb Code     4  memseta.o(.text)
+    __aeabi_memclr4                          0x00005a1d   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr8                          0x00005a1d   Thumb Code     0  memseta.o(.text)
+    _memset$wrapper                          0x00005a21   Thumb Code    18  memseta.o(.text)
+    __aeabi_llsl                             0x00005a33   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x00005a33   Thumb Code     0  llshl.o(.text)
+    __aeabi_llsr                             0x00005a51   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x00005a51   Thumb Code     0  llushr.o(.text)
+    __scatterload                            0x00005a71   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x00005a71   Thumb Code     0  init.o(.text)
+    __decompress                             0x00005a95   Thumb Code     0  __dczerorl2.o(.text)
+    __decompress1                            0x00005a95   Thumb Code    92  __dczerorl2.o(.text)
+    __scatterload_copy                       0x00005af1   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_zeroinit                   0x00005aff   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    _spi_read_write                          0x00005b0d   Thumb Code    48  spi_msd_driver.o(i._spi_read_write)
+    Region$$Table$$Base                      0x00005b40   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00005b60   Number         0  anon$$obj.o(Region$$Table)
+    SystemCoreClock                          0x10000000   Data           4  system_lpc17xx.o(.data)
+    buffer_teclado                           0x10000004   Data           1  main.o(.data)
+    mi_tecla                                 0x1000000c   Data           1  main.o(.data)
+    estado_SETEO                             0x1000000d   Data           1  main.o(.data)
+    estado_TECLADO                           0x1000000e   Data           1  main.o(.data)
+    estado_SD                                0x1000000f   Data           1  main.o(.data)
+    estado_PUERTA                            0x10000010   Data           1  main.o(.data)
+    estado_ID                                0x10000011   Data           1  main.o(.data)
+    res                                      0x10000012   Data           1  main.o(.data)
+    btr                                      0x10000014   Data           4  main.o(.data)
+    btw                                      0x10000018   Data           4  main.o(.data)
+    Semaforo_Puerta                          0x1000001c   Data           4  main.o(.data)
+    Semaforo_SD                              0x10000020   Data           4  main.o(.data)
+    Semaforo_Teclado                         0x10000024   Data           4  main.o(.data)
+    Semaforo_ID                              0x10000028   Data           4  main.o(.data)
+    Semaforo_SETEO                           0x1000002c   Data           4  main.o(.data)
+    Priori_TECLADO                           0x10000030   Data           4  main.o(.data)
+    Priori_SD                                0x10000034   Data           4  main.o(.data)
+    Priori_PUERTA                            0x10000038   Data           4  main.o(.data)
+    Priori_ID                                0x1000003c   Data           4  main.o(.data)
+    Priori_SETEO                             0x10000040   Data           4  main.o(.data)
+    msTicks                                  0x10000044   Data           4  main.o(.data)
+    br                                       0x10000048   Data           4  main.o(.data)
+    bw                                       0x1000004c   Data           4  main.o(.data)
+    texto0                                   0x10000050   Data          15  main.o(.data)
+    texto1                                   0x1000005f   Data          17  main.o(.data)
+    texto2                                   0x10000070   Data          16  main.o(.data)
+    texto3                                   0x10000080   Data          14  main.o(.data)
+    menu_SD_1                                0x1000008e   Data          14  main.o(.data)
+    menu_SD_2                                0x1000009c   Data          16  main.o(.data)
+    menu_SD_3                                0x100000ac   Data          14  main.o(.data)
+    menu_SD_4                                0x100000ba   Data          11  main.o(.data)
+    menu_SD_5                                0x100000c5   Data          14  main.o(.data)
+    menu_SD_6                                0x100000d3   Data          11  main.o(.data)
+    menu_SD_7                                0x100000de   Data          13  main.o(.data)
+    menu_SD_8                                0x100000eb   Data          15  main.o(.data)
+    menu_SD_9                                0x100000fa   Data          17  main.o(.data)
+    menu_SD_10                               0x1000010b   Data          17  main.o(.data)
+    menu_SD_11                               0x1000011c   Data          17  main.o(.data)
+    menu_SD_12                               0x1000012d   Data          17  main.o(.data)
+    menu_SD_13                               0x1000013e   Data          17  main.o(.data)
+    menu_PUERTA_ABRIR                        0x1000014f   Data          12  main.o(.data)
+    pfnModemCbs                              0x1000015c   Data           4  lpc17xx_uart.o(.data)
+    LED_OO1                                  0x10000160   Data           1  firm_app.o(.data)
+    LED_OO2                                  0x10000161   Data           1  firm_app.o(.data)
+    TxIntStat                                0x1000016f   Data           1  firm_uart.o(.data)
+    pxCurrentTCB                             0x10000178   Data           4  tasks.o(.data)
+    RTC_Tiempo                               0x100001d4   Data          32  main.o(.bss)
+    buffer                                   0x100001f4   Data          14  main.o(.bss)
+    ID_0                                     0x10000202   Data          10  main.o(.bss)
+    ID_1                                     0x1000020c   Data          10  main.o(.bss)
+    ID_2                                     0x10000216   Data          10  main.o(.bss)
+    ID_3                                     0x10000220   Data          10  main.o(.bss)
+    fs                                       0x1000022c   Data         560  main.o(.bss)
+    Acceso                                   0x1000045c   Data         548  main.o(.bss)
+    Registro                                 0x10000680   Data         548  main.o(.bss)
+    uartCbsDat                               0x100008a4   Data          64  lpc17xx_uart.o(.bss)
+    bc                                       0x100008fc   Data         528  firm_uart.o(.bss)
+    CardInfo                                 0x10000b0c   Data          88  spi_msd_driver.o(.bss)
+    __initial_sp                             0x10002e08   Data           0  startup_lpc17xx.o(STACK)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x000000cd
+
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00005d20, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x00005c30])
+
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00005b60, Max: 0x00080000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x000000cc   Data   RO            3    RESET               startup_lpc17xx.o
+    0x000000cc   0x00000000   Code   RO          639  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x000000cc   0x00000004   Code   RO          652    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x000000d0   0x00000004   Code   RO          655    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x000000d4   0x00000000   Code   RO          657    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x000000d4   0x00000000   Code   RO          659    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x000000d4   0x00000008   Code   RO          660    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x000000dc   0x00000000   Code   RO          662    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x000000dc   0x00000000   Code   RO          664    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x000000dc   0x00000004   Code   RO          653    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x000000e0   0x0000008c   Code   RO          602    .emb_text           port.o
+    0x0000016c   0x00000024   Code   RO            5    .text               startup_lpc17xx.o
+    0x00000190   0x000000e8   Code   RO          186    .text               lpc17xx_clkpwr.o
+    0x00000278   0x00000064   Code   RO          621    .text               heap_1.o
+    0x000002dc   0x00000018   Code   RO          648    .text               mc_w.l(strncpy.o)
+    0x000002f4   0x00000002   Code   RO          675    i.__scatterload_null  mc_w.l(handlers.o)
+    0x000002f6   0x00000006   PAD
+    0x000002fc   0x00000004   Code   RO            4    .ARM.__at_0x02FC    startup_lpc17xx.o
+    0x00000300   0x00000184   Code   RO           24    .text               system_lpc17xx.o
+    0x00000484   0x00000c80   Code   RO           59    .text               main.o
+    0x00001104   0x00000244   Code   RO          220    .text               lpc17xx_gpio.o
+    0x00001348   0x000000bc   Code   RO          243    .text               lpc17xx_pinsel.o
+    0x00001404   0x000000a0   Code   RO          276    .text               lpc17xx_rit.o
+    0x000014a4   0x00000458   Code   RO          292    .text               lpc17xx_rtc.o
+    0x000018fc   0x00000578   Code   RO          308    .text               lpc17xx_uart.o
+    0x00001e74   0x00000494   Code   RO          332    .text               lpc17xx_ssp.o
+    0x00002308   0x000000cc   Code   RO          351    .text               firm_app.o
+    0x000023d4   0x00000154   Code   RO          378    .text               firm_lcd.o
+    0x00002528   0x0000015c   Code   RO          397    .text               firm_teclado.o
+    0x00002684   0x0000015c   Code   RO          415    .text               firm_uart.o
+    0x000027e0   0x00000914   Code   RO          435    .text               spi_msd_driver.o
+    0x000030f4   0x000000bc   Code   RO          461    .text               diskio.o
+    0x000031b0   0x000018c4   Code   RO          487    .text               ff.o
+    0x00004a74   0x0000008c   Code   RO          512    .text               list.o
+    0x00004b00   0x000004ac   Code   RO          534    .text               queue.o
+    0x00004fac   0x00000930   Code   RO          553    .text               tasks.o
+    0x000058dc   0x000000ac   Code   RO          603    .text               port.o
+    0x00005988   0x00000062   Code   RO          642    .text               mc_w.l(uldiv.o)
+    0x000059ea   0x00000024   Code   RO          644    .text               mc_w.l(memcpya.o)
+    0x00005a0e   0x00000024   Code   RO          646    .text               mc_w.l(memseta.o)
+    0x00005a32   0x0000001e   Code   RO          666    .text               mc_w.l(llshl.o)
+    0x00005a50   0x00000020   Code   RO          668    .text               mc_w.l(llushr.o)
+    0x00005a70   0x00000024   Code   RO          670    .text               mc_w.l(init.o)
+    0x00005a94   0x0000005c   Code   RO          680    .text               mc_w.l(__dczerorl2.o)
+    0x00005af0   0x0000000e   Code   RO          674    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x00005afe   0x0000000e   Code   RO          676    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x00005b0c   0x00000034   Code   RO          450    i._spi_read_write   spi_msd_driver.o
+    0x00005b40   0x00000020   Data   RO          672    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Base: 0x10000000, Size: 0x00002e08, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x000000d0])
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x10000000   0x00000004   Data   RW           25    .data               system_lpc17xx.o
+    0x10000004   0x00000001   Data   RW           61    .data               main.o
+    0x10000005   0x00000003   PAD
+    0x10000008   0x00000153   Data   RW           62    .data               main.o
+    0x1000015b   0x00000001   PAD
+    0x1000015c   0x00000004   Data   RW          310    .data               lpc17xx_uart.o
+    0x10000160   0x0000000c   Data   RW          352    .data               firm_app.o
+    0x1000016c   0x00000003   Data   RW          398    .data               firm_teclado.o
+    0x1000016f   0x00000001   Data   RW          417    .data               firm_uart.o
+    0x10000170   0x00000008   Data   RW          488    .data               ff.o
+    0x10000178   0x0000003c   Data   RW          555    .data               tasks.o
+    0x100001b4   0x00000004   Data   RW          604    .data               port.o
+    0x100001b8   0x00000008   Data   RW          623    .data               heap_1.o
+    0x100001c0   0x000006e4   Zero   RW           60    .bss                main.o
+    0x100008a4   0x00000040   Zero   RW          309    .bss                lpc17xx_uart.o
+    0x100008e4   0x00000018   Zero   RW          333    .bss                lpc17xx_ssp.o
+    0x100008fc   0x00000210   Zero   RW          416    .bss                firm_uart.o
+    0x10000b0c   0x00000058   Zero   RW          436    .bss                spi_msd_driver.o
+    0x10000b64   0x000000a0   Zero   RW          554    .bss                tasks.o
+    0x10000c04   0x00002000   Zero   RW          622    .bss                heap_1.o
+    0x10002c04   0x00000004   PAD
+    0x10002c08   0x00000200   Zero   RW            1    STACK               startup_lpc17xx.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+         0          0          0          0          0       4212   core_cm3.o
+       188          8          0          0          0       3197   diskio.o
+      6340         40          0          8          0      21480   ff.o
+       204         12          0         12          0       1701   firm_app.o
+       340         16          0          0          0       1920   firm_lcd.o
+       348         10          0          3          0       1519   firm_teclado.o
+       348         22          0          1        528       2112   firm_uart.o
+       100         10          0          8       8192       1764   heap_1.o
+       140          0          0          0          0       2817   list.o
+       232         16          0          0          0       3189   lpc17xx_clkpwr.o
+       580         24          0          0          0       5448   lpc17xx_gpio.o
+       188          4          0          0          0       2120   lpc17xx_pinsel.o
+       160          0          0          0          0       1847   lpc17xx_rit.o
+      1112         64          0          0          0       4883   lpc17xx_rtc.o
+      1172         28          0          0         24       6081   lpc17xx_ssp.o
+      1400         66          0          4         64      15766   lpc17xx_uart.o
+      3200        230          0        340       1764      61820   main.o
+       312         26          0          4          0       3449   port.o
+      1196          0          0          0          0       6995   queue.o
+      2376         30          0          0         88       5839   spi_msd_driver.o
+        40         12        204          0        512        880   startup_lpc17xx.o
+       388         32          0          4          0      17973   system_lpc17xx.o
+      2352         38          0         60        160      12167   tasks.o
+
+    ----------------------------------------------------------------------
+     22716        688        236        448      11336     189179   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+         0          0          0          4          4          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+        92          0          0          0          0          0   __dczerorl2.o
+         0          0          0          0          0          0   entry.o
+         0          0          0          0          0          0   entry10a.o
+         0          0          0          0          0          0   entry11a.o
+         8          4          0          0          0          0   entry2.o
+         4          0          0          0          0          0   entry5.o
+         0          0          0          0          0          0   entry7b.o
+         0          0          0          0          0          0   entry8b.o
+         8          4          0          0          0          0   entry9a.o
+        30          0          0          0          0          0   handlers.o
+        36          8          0          0          0         68   init.o
+        30          0          0          0          0         68   llshl.o
+        32          0          0          0          0         68   llushr.o
+        36          0          0          0          0         68   memcpya.o
+        36          0          0          0          0        108   memseta.o
+        24          0          0          0          0         76   strncpy.o
+        98          0          0          0          0         92   uldiv.o
+
+    ----------------------------------------------------------------------
+       440         16          0          0          0        548   Library Totals
+         6          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+       434         16          0          0          0        548   mc_w.l
+
+    ----------------------------------------------------------------------
+       440         16          0          0          0        548   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+     23156        704        236        448      11336     186451   Grand Totals
+     23156        704        236        208      11336     186451   ELF Image Totals (compressed)
+     23156        704        236        208          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                23392 (  22.84kB)
+    Total RW  Size (RW Data + ZI Data)             11784 (  11.51kB)
+    Total ROM Size (Code + RO Data + RW Data)      23600 (  23.05kB)
+
+==============================================================================
+
